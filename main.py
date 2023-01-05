@@ -68,9 +68,9 @@ try:
 		message = f"Scan du réseau en cours... (n°{i+1}/{len(ips)} : {colorama.Fore.GREEN+ ips[i]}/{netMask + colorama.Fore.RESET})\n\n"
 
 		for ip in foundedIps:
-			ip = colorama.Fore.RED + ip + colorama.Fore.RESET
+			ip = colorama.Fore.RED + ip + "/" + netMask + colorama.Fore.RESET
 
-			message += f"Adresse ip ({ip}/{netMask}) trouvée dans le réseau ({colorama.Fore.CYAN + baseIp + colorama.Fore.RESET}) \n"
+			message += f"Adresse ip ({ip}) trouvée dans le réseau ({colorama.Fore.CYAN + baseIp + colorama.Fore.RESET}) \n"
 
 		print(message)
 		exists = ipExists(ips[i])
