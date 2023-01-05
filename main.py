@@ -57,9 +57,9 @@ def getPotentialIps(ip):
 ############################
 
 clear()
-ip = input("Saisissez l'adresse IP et le masque sous réseau (<IP>/<MASQUE>) :\n> ")
+baseIp = input("Saisissez l'adresse IP et le masque sous réseau (<IP>/<MASQUE>) :\n> ")
 try:
-	ips = getPotentialIps(ip)
+	ips = getPotentialIps(baseIp)
 	foundedIps = []
 
 	for i in range(len(ips)):
@@ -68,7 +68,8 @@ try:
 
 		for ip in foundedIps:
 			ip = colorama.Fore.RED + ip + colorama.Fore.RESET
-			message += f"Adresse ip ({ip}) trouvée !\n"
+
+			message += f"Adresse ip ({ip}) trouvée dans le réseau ({colorama.Fore.CYAN+baseIp+colorama.Fore.RESET}) \n"
 
 		print(message)
 		exists = ipExists(ips[i])
