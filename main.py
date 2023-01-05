@@ -9,11 +9,7 @@ def ipExists(ip_address):
 	result = subprocess.run(["ping", "-n", "1", ip_address], stdout=subprocess.PIPE)
 	result = result.stdout
 
-	errors = [
-		"Impossible",
-		"lai d'attente de la demande d"
-	]
-	exists = ((errors[0].encode() not in result) and (errors[1].encode() not in result))
+	exists = (b"perte 100" not in result)
 	return exists
 
 def getIpsRange(start_ip, end_ip):
