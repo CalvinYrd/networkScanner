@@ -9,7 +9,7 @@ def ipExists(ip_address):
 	result = subprocess.run(["ping", "-n", "1", ip_address], stdout=subprocess.PIPE)
 	result = result.stdout
 
-	exists = (b"perte 100" not in result)
+	exists = (b"octets=" in result)
 	return exists
 
 def getIpsRange(start_ip, end_ip):
@@ -66,7 +66,7 @@ try:
 		for ip in foundedIps:
 			ip = colorama.Fore.RED + ip + "/" + netMask + colorama.Fore.RESET
 
-			message += f"Adresse ip ({ip}) trouvée dans le réseau ({colorama.Fore.CYAN + baseIp + colorama.Fore.RESET}) \n"
+			message += f"Adresse ip ({ip}) trouvée dans le réseau de ({colorama.Fore.CYAN + baseIp + colorama.Fore.RESET}) \n"
 
 		print(message)
 		exists = ipExists(ips[i])
@@ -75,4 +75,3 @@ try:
 except :
 	clear()
 	print("Une erreur est survenue, l'adresse IP saisie semble incorrecte\nil est possible que vous ayez oublié le masque")
-
